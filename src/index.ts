@@ -117,9 +117,7 @@ async function main() {
     outputTransport: argv.outputTransport as string,
   })
 
-  const activeCount = [hasStdio, hasSse, hasStreamableHTTP].filter(
-    Boolean,
-  ).length
+  const activeCount = [hasStdio, hasSse, hasStreamableHTTP].filter(Boolean).length
 
   if (activeCount === 0) {
     logger.error(
@@ -132,7 +130,6 @@ async function main() {
     )
     process.exit(1)
   }
-
 
 
   if (hasStdio && hasSse) {
