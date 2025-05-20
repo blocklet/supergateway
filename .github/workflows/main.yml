@@ -35,6 +35,6 @@ jobs:
         if: "! contains(toJSON(github.event.commits.*.message), '[skip npm]')"
         run: |
           npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
-          VERSION=$(cat version | awk '{$1=$1;print}')
+          VERSION=$(node -p "require('./package.json').version")
           echo "publish version ${VERSION}"
-          pnpm publish --filter --access public --no-git-checks
+          pnpm publish --access public --no-git-checks
