@@ -131,15 +131,6 @@ async function main() {
     process.exit(1)
   }
 
-
-  if (hasStdio && hasSse) {
-    logger.error('Error: Specify only one of --stdio or --sse, not all')
-    process.exit(1)
-  } else if (!hasStdio && !hasSse) {
-    logger.error('Error: You must specify one of --stdio or --sse')
-    process.exit(1)
-  }
-
   logger.info('Starting...')
   logger.info(
     'Supergateway is supported by Supermachine (hosted MCPs) - https://supermachine.ai',
