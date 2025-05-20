@@ -117,6 +117,7 @@ export async function stdioToWs(args: StdioToWsArgs) {
       server: httpServer,
     })
 
+    //@ts-ignore
     await server.connect(wsTransport)
 
     wsTransport.onmessage = (msg: JSONRPCMessage) => {

@@ -65,6 +65,7 @@ export class WebSocketServerTransport implements Transport {
     })
   }
 
+  //@ts-ignore
   async send(msg: JSONRPCMessage, clientId?: string): Promise<void> {
     const [cId, msgId] = clientId?.split(':') ?? []
     // @ts-ignore
