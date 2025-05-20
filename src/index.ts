@@ -117,6 +117,24 @@ async function main() {
     outputTransport: argv.outputTransport as string,
   })
 
+  const activeCount = [hasStdio, hasSse, hasStreamableHTTP].filter(
+    Boolean,
+  ).length
+
+  if (activeCount === 0) {
+    logger.error(
+      'Error: You must specify one of --stdio, --sse, or --streamableHTTP',
+    )
+    process.exit(1)
+  } else if (activeCount > 1) {
+    logger.error(
+      'Error: Specify only one of --stdio, --sse, or --streamableHTTP, not multiple',
+    )
+    process.exit(1)
+  }
+
+
+
   if (hasStdio && hasSse) {
     logger.error('Error: Specify only one of --stdio or --sse, not all')
     process.exit(1)
